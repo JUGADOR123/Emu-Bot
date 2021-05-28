@@ -25,7 +25,7 @@ token = os.getenv('key')
 intent = discord.Intents.default()
 intent.members = True
 intent.guilds = True
-bot = commands.Bot(command_prefix='-', help_command=None,
+bot = commands.Bot(command_prefix='--', help_command=None,
                    description='Just a Discord Bot', intents=intent)
 slash = SlashCommand(bot, sync_commands=True,
                      sync_on_cog_reload=True, override_type=True)
