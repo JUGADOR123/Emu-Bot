@@ -21,6 +21,7 @@ class events(commands.Cog):
     async def on_ready(self):
         print(str(datetime.now().time()) +
               ' Bot has logged in as: {0.user}'.format(self.bot))
+        await self.bot.change_presence(activity=discord.Activity(type=discord.ActivityType.playing, name="Slash commands!! 🎂🎂"))
 
     @commands.Cog.listener()
     async def on_guild_join(self, guild):

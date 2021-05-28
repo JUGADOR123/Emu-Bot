@@ -1,5 +1,4 @@
 .env
-channels.json
 .vscode/
 .vscode/settings.json
 __pycache__/

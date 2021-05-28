@@ -34,8 +34,4 @@ for filename in os.listdir('cogs'):
     if filename.endswith('.py'):
         bot.load_extension(f'cogs.{filename[:-3]}')
 # bot.load_extension(f'cogs.Others')
-@bot.event
-async def on_ready():
-    print('Bot {0.user}'.format(bot))
-    await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.playing, name="Slash commands!! 🎂🎂"))
 bot.run(token)
