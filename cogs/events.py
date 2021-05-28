@@ -67,7 +67,9 @@ class events(commands.Cog):
     async def on_message(self, message):
         if message.author is not self.bot:
             if message.author is not message.author.bot:
-                stuff = f'[{datetime.now("%b %d %Y %H:%M:%S")}] [{message.guild} @ {message.channel}] [{message.author}] : {message.content}'
+                time = datetime.now()
+
+                stuff = f'[{time.strftime("%b %d %Y %H:%M:%S")}] [{message.guild} @ {message.channel}] [{message.author}] : {message.content}'
                 print(stuff)
 
 
