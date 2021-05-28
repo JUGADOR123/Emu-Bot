@@ -1,0 +1,8 @@
+.env
+channels.json
+.vscode/
+.vscode/settings.json
+__pycache__/
+discord.log
+guilds.json
+images/
