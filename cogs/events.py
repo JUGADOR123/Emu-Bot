@@ -28,8 +28,14 @@ class events(commands.Cog):
                     json.dump(data,file)
                     file.truncate()
                     print(f'Added Guild: '+guild.name+' to the list')
+        print("<-------------------->")
         print(str(datetime.now().time()) +
               ' Bot has logged in as: {0.user}'.format(self.bot))
+        print("<-------------------->")
+        print("Active Guilds: ")
+        for guild in self.bot.guilds:
+            print(guild.name)
+        print("<-------------------->")
         await self.bot.change_presence(activity=discord.Activity(type=discord.ActivityType.playing, name="Slash commands!! 🎂🎂"))
 
 
