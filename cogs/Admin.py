@@ -1,11 +1,12 @@
 
 import json
+import warmup
 import messages
 import discord
 from discord_slash import cog_ext, SlashContext
 from discord.ext import commands, tasks
 from discord_slash.utils.manage_commands import create_option
-import settings
+
 
 
 def addchannel(tmp):
@@ -49,7 +50,7 @@ class Admin(commands.Cog):
                 channel=self.bot.get_channel(id)
                 await channel.send(embed=messages.shortMsg())
 
-    @cog_ext.cog_slash(name="add_channel", description="Adds Channel to the Timed Message Whitelist", guild_ids=settings.guilds)
+    @cog_ext.cog_slash(name="add_channel", description="Adds Channel to the Timed Message Whitelist", guild_ids=warmup.guilds)
     @commands.is_owner()
     async def add_channel(self, ctx: SlashContext, channel: discord.TextChannel):
         """Adds Channel to the Timed Message Whitelist"""
@@ -59,7 +60,7 @@ class Admin(commands.Cog):
         elif(tmp == False):
             await ctx.send(f"{ctx.author.mention} Channel not added to the whitelist: Key Already Exists")
 
-    @cog_ext.cog_slash(name="rm_channel", description="Removes Channel from whitelist", guild_ids=settings.guilds)
+    @cog_ext.cog_slash(name="rm_channel", description="Removes Channel from whitelist", guild_ids=warmup.guilds)
     @commands.is_owner()
     async def rm_channel(self, ctx: SlashContext, channel: discord.TextChannel):
         """Removes Channel from whitelist"""
@@ -69,7 +70,7 @@ class Admin(commands.Cog):
         elif(tmp == False):
             await ctx.send(f"{ctx.author.mention} Couldn't remove channel from whitelist: Key does not exist.")
 
-    @cog_ext.cog_slash(name="init_messages", description="Start/Stop repetitive messages", guild_ids=settings.guilds, options=[create_option(name="value", description="Enable or disable", option_type=5, required=True), create_option(name="time", description="Minutes", option_type=4, required=False)])
+    @cog_ext.cog_slash(name="init_messages", description="Start/Stop repetitive messages", guild_ids=warmup.guilds, options=[create_option(name="value", description="Enable or disable", option_type=5, required=True), create_option(name="time", description="Minutes", option_type=4, required=False)])
     @commands.is_owner()
     async def init_Messages(self, ctx: SlashContext, value: bool, time: int):
         if value is True:

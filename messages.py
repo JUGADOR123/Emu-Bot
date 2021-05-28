@@ -1,4 +1,7 @@
+import json
+import random
 import discord
+import warmup
 from datetime import datetime
 
 
@@ -111,11 +114,13 @@ def kovacs(context):
 
 
 def bonk(ctx, member):
+    with open('images/bonk.json') as file:
+        data = json.load(file)
+        chosen = random.choice(data)
 
     bonk = discord.Embed(title="YOU HAVE BEEN BONKED", color=0xF5D713, timestamp=datetime.now(
     ), description=f"{member.mention} you have been bonked by{ctx.author.mention}")
-    bonk.set_image(url=str(
-        "https://media1.tenor.com/images/c18e9d2fe73f7a7a511761ee8b476ecc/tenor.gif?itemid=19823428"))
+    bonk.set_image(url=str(chosen))
     return bonk
 # embed for key already added
 
@@ -135,9 +140,24 @@ def key(ctx):
 
 
 def hug(ctx, member):
+    with open('images/hug.json') as file:
+        data=json.load(file)
+        chosen=random.choice(data)
 
     hug = discord.Embed(title="You have been hugged", timestamp=datetime.now(
     ), description=f"{member.mention} you have been hugged by{ctx.author.mention}")
-    hug.set_image(url=str(
-        "https://i.pinimg.com/originals/e2/c9/7a/e2c97a3b7a1ac0ec5bcecc0c18c61209.gif"))
+    hug.set_image(url=str(chosen))
     return hug
+
+
+def welcome(member):
+    with open('images/hello.json', 'r+') as file:
+        data = json.load(file)
+        chosen = random.choice(data)
+
+    welcome = discord.Embed(
+        title='\u200b', color=warmup.r, timestamp=datetime.now())
+    welcome.add_field(
+        name='\u200b', value=f'Welcome {member.mention} to the server!')
+    welcome.set_image(url=str(chosen))
+    return welcome

@@ -19,9 +19,19 @@ class events(commands.Cog):
 
     @commands.Cog.listener()
     async def on_ready(self):
+        for guild in self.bot.guilds:
+            with open('guilds.json','r+') as file:
+                data=json.load(file)
+                if guild.id not in data:
+                    data.append(guild.id)
+                    file.seek(0)
+                    json.dump(data,file)
+                    file.truncate()
+                    print(f'Added Guild: '+guild.name+' to the list')
         print(str(datetime.now().time()) +
               ' Bot has logged in as: {0.user}'.format(self.bot))
         await self.bot.change_presence(activity=discord.Activity(type=discord.ActivityType.playing, name="Slash commands!! 🎂🎂"))
+
 
     @commands.Cog.listener()
     async def on_guild_join(self, guild):
