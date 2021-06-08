@@ -131,7 +131,7 @@ def key(ctx):
     key.add_field(
         name="Step 1", value="Locate your character.json (user/profiles/AID/here)", inline=False)
     key.add_field(
-        name="Step 2", value="Go to <#740002608424550522> and do !!clean with your character.json attached", inline=False)
+        name="Step 2", value="Go to <#740002608424550522> or <829464850895077406> and do !!clean with your character.json attached", inline=False)
     key.add_field(
         name="Step 3", value="Replace your current character.json with the new clean one", inline=False)
     key.add_field(name="Step 4 (Optional but recommended)",
