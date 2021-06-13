@@ -17,9 +17,9 @@ def install():
     s2 = discord.Embed(title="Step 2", description="Download the [Server Files](https://mega.nz/folder/Fg1WCAbR#LVAylusBUPB0cJ6QQXI2QA/file/U8sWibaZ) and the [Game Binaries](https://mega.nz/folder/Fg1WCAbR#LVAylusBUPB0cJ6QQXI2QA/file/Y5tCjKZL)")
     s3 = discord.Embed(title="Step 3", description="Using [7-Zip](https://www.7-zip.org) extract the game, and then the binaries into the game folder, next extract the server elsewhere")
     s4 = discord.Embed(title="Step 4", description="Apply the [Key Already Added Fix](https://mega.nz/file/7EtxwAJK#DdsT5snvRAydwUXVw-364NUpUJBEiWspAKnlGdyoiwI) by downloading the file and extracting into server>src folder, when prompt select replace files")
-    s5=discord.Embed(title="Step 5",description="Launch the Jet launcher, it will open an error asking to locate the server, navigate to the location of the server and click ok")
+    s5 = discord.Embed(title="Step 5",description="Launch the Jet launcher, it will open an error asking to locate the server, navigate to the location of the server and click ok")
     s6 = discord.Embed(title="Step 6",description="Click on Start Server and wait until you see the server name appear on the dropdown to the left side of the window, then hit connect, then create an account by clicking the little plus sign and you are ready to go")
-    steps=[s1,s2,s3,s4,s5,s6]
+    steps={"1":s1,"2":s2,"3":s3,"4":s4,"5":s5,"6":s6}
     return steps
 
 

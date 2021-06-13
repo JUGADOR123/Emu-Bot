@@ -80,9 +80,9 @@ class events(commands.Cog):
 
                 stuff = f'[{time.strftime("%b %d %Y %H:%M:%S")}] [{message.guild} @ {message.channel}] [{message.author}] : {message.content}'
                 print(stuff)
-    @commands.Cog.listener()
-    async def on_button_click(self,res):
-        await res.respond(type=InteractionType.ChannelMessageWithSource,content=f"{res.component.label} pressed")
+    #@commands.Cog.listener()
+    #async def on_button_click(self,res):
+    #    await res.respond(type=InteractionType.ChannelMessageWithSource,content=f"{res.component.label} pressed")
 
 def setup(bot):
     bot.add_cog(events(bot))

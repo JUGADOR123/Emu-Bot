@@ -1,4 +1,5 @@
-from discord.ext.commands import Context
+
+from asyncio.exceptions import TimeoutError
 import slash_patch
 from discord.ext import commands
 from discord_components.button import ButtonStyle
@@ -6,7 +7,6 @@ from discord_slash import cog_ext, SlashContext
 from discord_components import Button
 import messages
 import warmup
-from ButtonPaginator import Paginator
 
 
 class Info(commands.Cog):
@@ -52,8 +52,39 @@ class Info(commands.Cog):
     @cog_ext.cog_slash(name="install", guild_ids=warmup.guilds, description="How to install Jet 12.9")
     async def install(self, ctx: SlashContext):
         """How to install Jet 12.9"""
-        e = Paginator(bot=self.bot, ctx=ctx, embeds=messages.install())
-        await e.start()
+        steps = messages.install()
+        index = 1
+        b1=Button(style=ButtonStyle.green, label="Previous", id="prev", disabled=True)
+        b2=Button(style=ButtonStyle.gray, label=f"Step 1/6", disabled=True)
+        b3=Button(style=ButtonStyle.green, label="Next", id="next")
+        comps=[[b1,b2,b3]]
+        msg = await ctx.send(embed=steps["1"], components=comps)
+        while True:
+            try:
+                inte = await self.bot.wait_for("button_click", timeout=120, check=lambda i: i.message.id == msg.id)
+            except TimeoutError:
+               return
+            else:
+                if inte.component.id == "next" and index < 6:
+                    index=index+1
+                    comps[0][1].label=f"Step {index}/6"
+                    comps[0][0].disabled=False
+                    await msg.edit(embed=steps[f"{index}"],components=comps)
+                    await inte.respond(type=6)
+                if inte.component.id=="prev" and index > 1:
+                    index=index-1
+                    comps[0][1].label = f"Step {index}/6"
+                    await msg.edit(embed=steps[f"{index}"], components=comps)
+                    await inte.respond(type=6)
+                if index==1:
+                    comps[0][0].disabled=True
+                    await msg.edit(embed=steps[f"{index}"], components=comps)
+                    
+                if index==6:
+                    comps[0][2].disabled=True
+                    await msg.edit(embed=steps[f"{index}"], components=comps)
+                   
+
 # send noobs to kovac's discord
 
     @cog_ext.cog_slash(name="kovacs", guild_ids=warmup.guilds, description="Kovacs related help")
