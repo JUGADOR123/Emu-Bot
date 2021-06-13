@@ -2,6 +2,8 @@ import json
 import os
 import discord
 from datetime import datetime
+from discord_components.client import DiscordComponents
+from discord_components.interaction import InteractionType
 import messages
 from discord.ext import commands
 
@@ -19,6 +21,7 @@ class events(commands.Cog):
 
     @commands.Cog.listener()
     async def on_ready(self):
+        DiscordComponents(self.bot)
         for guild in self.bot.guilds:
             with open('guilds.json','r+') as file:
                 data=json.load(file)
@@ -77,7 +80,9 @@ class events(commands.Cog):
 
                 stuff = f'[{time.strftime("%b %d %Y %H:%M:%S")}] [{message.guild} @ {message.channel}] [{message.author}] : {message.content}'
                 print(stuff)
-
+    @commands.Cog.listener()
+    async def on_button_click(self,res):
+        await res.respond(type=InteractionType.ChannelMessageWithSource,content=f"{res.component.label} pressed")
 
 def setup(bot):
     bot.add_cog(events(bot))

@@ -1,5 +1,11 @@
+import slash_patch
 from discord.ext import commands
+from discord.ext.commands import Cog
+from discord_components.button import ButtonStyle
+from discord_components.client import DiscordComponents
+
 from discord_slash import cog_ext, SlashContext
+from discord_components import Button
 import messages
 import warmup
 
@@ -10,16 +16,12 @@ class Info(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @cog_ext.cog_slash(name="population", description="Displays how many members the guild has", guild_ids=warmup.guilds)
-    async def population(self, ctx: SlashContext):
-        """Displays how many members the guild has"""
-        await ctx.send(embed=messages.popu(ctx))
     # common information(updates,installation,etc,multiplayer)
 
     @cog_ext.cog_slash(name="info", guild_ids=warmup.guilds, description="General Information about the Jet Project")
     async def info(self, ctx: SlashContext):
         """General Information about the Jet Project"""
-        await ctx.send(embed=messages.info(ctx))
+        await ctx.send(embed=messages.info(ctx), components=[[Button(style=ButtonStyle.URL, label="Documentation", url="https://docs.justemutarkov.eu/"), Button(style=ButtonStyle.URL, label="Mods Archive", url="https://justemutarkov.eu/download"), Button(style=ButtonStyle.URL, label="Jet Discord Invite", url="https://discord.gg/Gbn5bTV")]])
 
     # harder bots
 

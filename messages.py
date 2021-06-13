@@ -7,7 +7,7 @@ from datetime import datetime
 
 def shortMsg():
     shortMsg = discord.Embed(
-        title="Need Help?", description=r"Do you need help? Cant find the solution for your problem? type / and see all the available commands! Keep in mind, this is JET not AKI", color=0xF5D713, timestamp=datetime.now())
+        title="Need Help?", description=r"Do you need help? Cant find the solution for your problem? type / and see all the available commands! Keep in mind, this is JET not AKI", color=warmup.r, timestamp=datetime.now())
     shortMsg.set_thumbnail(
         url=str("https://cdn.discordapp.com/emojis/354149510252986378.png"))
     return shortMsg
@@ -27,7 +27,7 @@ def install(context):
 
 
 def popu(context):
-    popu = discord.Embed(title="Population", color=0xF5D713,
+    popu = discord.Embed(title="Population", color=warmup.r,
                          timestamp=datetime.now(), description=f"Hey there {context.author.mention} You are part of the {context.guild.member_count} members of this server!")
     popu.set_thumbnail(url=str("https://i.imgur.com/lDGYw7D.png"))
     return popu
@@ -35,7 +35,7 @@ def popu(context):
 
 
 def info(context):
-    info = discord.Embed(title="General Information", color=0xF5D713, timestamp=datetime.now(
+    info = discord.Embed(title="General Information", color=warmup.r, timestamp=datetime.now(
     ), description=f"Hey {context.author.mention} you looking for some general information? This is the right place!")
     info.add_field(
         name="Update", value="We will announce when JET is updated", inline=True)
@@ -43,12 +43,8 @@ def info(context):
                    value="Planned, not in constant development", inline=True)
     info.add_field(name="Do i need official tarkov?",
                    value="Nope, all files are given", inline=True)
-    info.add_field(name="How to install?",
-                   value="Check the [install](https://discord.com/channels/739984913599692881/739985161973792839/816229421186940958) OR use *install", inline=True)
     info.add_field(name="How to install mods?",
                    value="drop the folders under user/mods and delete the user/cache folder", inline=True)
-    info.add_field(name="Documentation",
-                   value="You can find how to mod, make edits and general info [HERE](https://docs.kiobu.dev/)", inline=True)
     info.set_thumbnail(url=str("https://imgur.com/DRNkd2a.png"))
     return info
 
@@ -57,7 +53,7 @@ def info(context):
 
 def port(context):
     port = discord.Embed(title="Port Permission Denied Fix",
-                         color=0xF5D713, timestamp=datetime.now(), description=f"Hey {context.author.mention} Go to user/config/server.json and change the port to something else, then go to you game client, open the launcher.config.json and change the port so its the same one as the file earlier")
+                         color=warmup.r, timestamp=datetime.now(), description=f"Hey {context.author.mention} Go to user/config/server.json and change the port to something else, then go to you game client, open the launcher.config.json and change the port so its the same one as the file earlier")
     port.set_image(url=str("https://imgur.com/QjmUklX.png"))
     return port
 
@@ -66,7 +62,7 @@ def port(context):
 
 def difficulty(context):
     difficulty = discord.Embed(title="Want a real challenge huh?",
-                               color=0xF5D713, timestamp=datetime.now(), description=f"I see, so u believe u can do better {context.author.mention}? Well prove it")
+                               color=warmup.r, timestamp=datetime.now(), description=f"I see, so u believe u can do better {context.author.mention}? Well prove it")
     difficulty.add_field(
         name="Step 1", value="You can use Altered Escape Mod to get harder gameplay, you can find it [here](https://discord.gg/AwvGSFHucw)", inline=False)
     return difficulty
@@ -75,7 +71,7 @@ def difficulty(context):
 
 
 def editor(context):
-    editor = discord.Embed(title="Jet Profile Editor", color=0xF5D713, timestamp=datetime.now(
+    editor = discord.Embed(title="Jet Profile Editor", color=warmup.r, timestamp=datetime.now(
     ), description=f"{context.author.mention} you cheeky bastard you want to skip a quest or give youself money, dont you? Anyways here is how:")
     editor.add_field(name="Where to Get?",
                      value="[Here](https://github.com/JustEmuTarkov/JET-ProfileEditor/releases)", inline=False)
@@ -85,7 +81,7 @@ def editor(context):
 
 def hideout(context):
     hideout = discord.Embed(title="Short Crafting timers, Remove Weight, more stamina,etc",
-                            color=0xF5D713, timestamp=datetime.now(), description=f"Hey {context.author.mention} here is how you fix the bug plus more goodies")
+                            color=warmup.r, timestamp=datetime.now(), description=f"Hey {context.author.mention} here is how you fix the bug plus more goodies")
     hideout.add_field(
         name="Step 1", value="Download [All in One Mod](https://github.com/JUGADOR123/All-in-One/releases)", inline=False)
     hideout.add_field(
@@ -98,7 +94,7 @@ def hideout(context):
 
 
 def server(context):
-    server = discord.Embed(title="Fix server closing instantly upon booting", color=0xF5D713, timestamp=datetime.now(
+    server = discord.Embed(title="Fix server closing instantly upon booting", color=warmup.r, timestamp=datetime.now(
     ), description=f"Lmao look at this dude {context.author.mention} he broke his server lmaooo, get a load of this guy. Anyways, there is no fix for that you have to reinstall")
     server.set_image(url=str(
         "https://media.tenor.com/images/8c23b964645e1e7de2b958964efb5328/tenor.gif"))
@@ -107,7 +103,7 @@ def server(context):
 
 
 def kovacs(context):
-    kovacs = discord.Embed(title="Kovacs Related Help",  color=0xF5D713,
+    kovacs = discord.Embed(title="Kovacs Related Help",  color=warmup.r,
                            timestamp=datetime.now(), description=f"Hey there {context.author.mention} you need help with altered escape install? or any of the kovacs mods? PLEASE refer to that under [Kovac's Discord](https://discord.gg/AwvGSFHucw) ")
     return kovacs
 # embed for bonk
@@ -118,7 +114,7 @@ def bonk(ctx, member):
         data = json.load(file)
         chosen = random.choice(data)
 
-    bonk = discord.Embed(title="YOU HAVE BEEN BONKED", color=0xF5D713, timestamp=datetime.now(
+    bonk = discord.Embed(title="YOU HAVE BEEN BONKED", color=warmup.r, timestamp=datetime.now(
     ), description=f"{member.mention} you have been bonked by{ctx.author.mention}")
     bonk.set_image(url=str(chosen))
     return bonk
