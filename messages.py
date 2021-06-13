@@ -12,17 +12,17 @@ def shortMsg():
         url=str("https://cdn.discordapp.com/emojis/354149510252986378.png"))
     return shortMsg
 # Embed for Installation
+def install():
+    s1 = discord.Embed(title="Step 1", description="Download Escape From Tarkov 12.9 from [HERE](https://mega.nz/file/X8xUVZzC#I2jQWaAX6yRs94vscbsFCOU9rU7kleFmnpNZY8vMgLw) or from [HERE](https://drive.google.com/file/d/1hOJ10hiZk2EQUWKwHTPfhol5XgDpt2-U/view?usp=sharing) or [HERE](https://cdn.storeit.digital/file/JustEmuTarkov/EFT.0.12.9.2.10988.zip)")
+    s2 = discord.Embed(title="Step 2", description="Download the [Server Files](https://mega.nz/folder/Fg1WCAbR#LVAylusBUPB0cJ6QQXI2QA/file/U8sWibaZ) and the [Game Binaries](https://mega.nz/folder/Fg1WCAbR#LVAylusBUPB0cJ6QQXI2QA/file/Y5tCjKZL)")
+    s3 = discord.Embed(title="Step 3", description="Using [7-Zip](https://www.7-zip.org) extract the game, and then the binaries into the game folder, next extract the server elsewhere")
+    s4 = discord.Embed(title="Step 4", description="Apply the [Key Already Added Fix](https://mega.nz/file/7EtxwAJK#DdsT5snvRAydwUXVw-364NUpUJBEiWspAKnlGdyoiwI) by downloading the file and extracting into server>src folder, when prompt select replace files")
+    s5=discord.Embed(title="Step 5",description="Launch the Jet launcher, it will open an error asking to locate the server, navigate to the location of the server and click ok")
+    s6 = discord.Embed(title="Step 6",description="Click on Start Server and wait until you see the server name appear on the dropdown to the left side of the window, then hit connect, then create an account by clicking the little plus sign and you are ready to go")
+    steps=[s1,s2,s3,s4,s5,s6]
+    return steps
 
 
-def install(context):
-    install = discord.Embed(title="How to get JET 12.9", timestamp=datetime.now(
-    ), description=f"We have multiple ways of getting JET, choose the one you desire")
-
-    install.add_field(name="Option 1 ",
-                      value="Go to [this message](https://discord.com/channels/739984913599692881/739985161973792839/777963115198545940) and follow the instructions ", inline=False)
-    install.add_field(
-        name="Step 2", value="It is also recommended to follow [this](https://discord.com/channels/739984913599692881/739985161973792839/818148664472109066), it will prevent \"Key Already Added \" from happening")
-    return install
 # Embed for Population
 
 

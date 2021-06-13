@@ -1,13 +1,12 @@
+from discord.ext.commands import Context
 import slash_patch
 from discord.ext import commands
-from discord.ext.commands import Cog
 from discord_components.button import ButtonStyle
-from discord_components.client import DiscordComponents
-
 from discord_slash import cog_ext, SlashContext
 from discord_components import Button
 import messages
 import warmup
+from ButtonPaginator import Paginator
 
 
 class Info(commands.Cog):
@@ -53,7 +52,8 @@ class Info(commands.Cog):
     @cog_ext.cog_slash(name="install", guild_ids=warmup.guilds, description="How to install Jet 12.9")
     async def install(self, ctx: SlashContext):
         """How to install Jet 12.9"""
-        await ctx.send(embed=messages.install(ctx))
+        e = Paginator(bot=self.bot, ctx=ctx, embeds=messages.install())
+        await e.start()
 # send noobs to kovac's discord
 
     @cog_ext.cog_slash(name="kovacs", guild_ids=warmup.guilds, description="Kovacs related help")
