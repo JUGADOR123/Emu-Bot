@@ -9,6 +9,8 @@ import messages
 import warmup
 
 auth = Button(style=1, label="Made by Jug", emoji="♥", disabled=True)
+invite = Button(style=5, label="Invite Me!",
+                url="https://discord.com/api/oauth2/authorize?client_id=752568871986397216&permissions=2201873472&scope=bot%20applications.commands", emoji="♥")
 
 class Info(commands.Cog):
     """Information Related commands"""
@@ -21,7 +23,7 @@ class Info(commands.Cog):
     @cog_ext.cog_slash(name="info", guild_ids=warmup.guilds, description="General Information about the Jet Project")
     async def info(self, ctx: SlashContext):
         """General Information about the Jet Project"""
-        await ctx.send(embed=messages.info(ctx), components=[[Button(style=ButtonStyle.URL, label="Documentation", url="https://docs.justemutarkov.eu/"), Button(style=ButtonStyle.URL, label="Mods Archive", url="https://justemutarkov.eu/download"), Button(style=ButtonStyle.URL, label="Jet Discord Invite", url="https://discord.gg/Gbn5bTV")],[auth]])
+        await ctx.send(embed=messages.info(ctx), components=[[Button(style=ButtonStyle.URL, label="Documentation", url="https://docs.justemutarkov.eu/"), Button(style=ButtonStyle.URL, label="Mods Archive", url="https://justemutarkov.eu/download"), Button(style=ButtonStyle.URL, label="Jet Discord Invite", url="https://discord.gg/Gbn5bTV")],[auth,invite]])
 
     # profile editor
 
