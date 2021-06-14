@@ -8,7 +8,7 @@ from discord_components import Button
 import messages
 import warmup
 
-auth = Button(style=4, label="Made by Jug", disabled=True)
+auth = Button(style=1, label="Made by Jug", emoji="♥", disabled=True)
 
 class Info(commands.Cog):
     """Information Related commands"""
@@ -28,7 +28,11 @@ class Info(commands.Cog):
     @cog_ext.cog_slash(name="editor", guild_ids=warmup.guilds, description="Skip a quest, get money, skills, etc")
     async def editor(self, ctx: SlashContext):
         """Skip a quest, get money, skills, etc"""
-        await ctx.send(embed=messages.editor(ctx))
+        rel = Button(style=5, label="Release",url="https://github.com/JustEmuTarkov/JET-ProfileEditor/releases")
+        src = Button(style=5, label="Source Code",
+                     url="https://github.com/JustEmuTarkov/JET-ProfileEditor")
+        comps=[[rel,src],[auth]]
+        await ctx.send(embed=messages.editor(ctx),components=comps)
     # all in one
 
     @cog_ext.cog_slash(name="aio", guild_ids=warmup.guilds, description="How to shorten hideout craftings, longer raids,no weight, etc.")
