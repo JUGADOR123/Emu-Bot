@@ -5,12 +5,7 @@ import warmup
 from datetime import datetime
 
 
-def shortMsg():
-    shortMsg = discord.Embed(
-        title="Need Help?", description=r"Do you need help? Cant find the solution for your problem? type / and see all the available commands! Keep in mind, this is JET not AKI", color=warmup.r, timestamp=datetime.now())
-    shortMsg.set_thumbnail(
-        url=str("https://cdn.discordapp.com/emojis/354149510252986378.png"))
-    return shortMsg
+
 # Embed for Installation
 def install():
     s1 = discord.Embed(title="Step 1", description="Download Escape From Tarkov 12.9 from [HERE](https://mega.nz/file/X8xUVZzC#I2jQWaAX6yRs94vscbsFCOU9rU7kleFmnpNZY8vMgLw) or from [HERE](https://drive.google.com/file/d/1hOJ10hiZk2EQUWKwHTPfhol5XgDpt2-U/view?usp=sharing) or [HERE](https://cdn.storeit.digital/file/JustEmuTarkov/EFT.0.12.9.2.10988.zip)",color=warmup.r)
