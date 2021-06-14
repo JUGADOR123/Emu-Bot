@@ -1,68 +1,109 @@
+
+from asyncio.exceptions import TimeoutError
+import slash_patch
 from discord.ext import commands
+from discord_components.button import ButtonStyle
 from discord_slash import cog_ext, SlashContext
+from discord_components import Button
 import messages
 import warmup
 
+auth = Button(style=1, label="Made by Jug", emoji="♥", disabled=True)
+invite = Button(style=5, label="Invite Me!",
+                url="https://discord.com/api/oauth2/authorize?client_id=752568871986397216&permissions=2201873472&scope=bot%20applications.commands", emoji="♥")
+
 
 class Info(commands.Cog):
-    """Information Related commands"""
-
     def __init__(self, bot):
         self.bot = bot
 
-    @cog_ext.cog_slash(name="population", description="Displays how many members the guild has", guild_ids=warmup.guilds)
-    async def population(self, ctx: SlashContext):
-        """Displays how many members the guild has"""
-        await ctx.send(embed=messages.popu(ctx))
     # common information(updates,installation,etc,multiplayer)
 
     @cog_ext.cog_slash(name="info", guild_ids=warmup.guilds, description="General Information about the Jet Project")
     async def info(self, ctx: SlashContext):
-        """General Information about the Jet Project"""
-        await ctx.send(embed=messages.info(ctx))
-
-    # harder bots
-
-    @cog_ext.cog_slash(name="difficulty", guild_ids=warmup.guilds, description="Make the game harder")
-    async def difficulty(self, ctx: SlashContext):
-        """Make the game harder"""
-        await ctx.send(embed=messages.difficulty(ctx))
+        await ctx.send(embed=messages.info(ctx), components=[[Button(style=ButtonStyle.URL, label="Documentation", url="https://docs.justemutarkov.eu/"), Button(style=ButtonStyle.URL, label="Mods Archive", url="https://justemutarkov.eu/download"), Button(style=ButtonStyle.URL, label="Jet Discord Invite", url="https://discord.gg/Gbn5bTV")], [auth, invite]])
 
     # profile editor
 
     @cog_ext.cog_slash(name="editor", guild_ids=warmup.guilds, description="Skip a quest, get money, skills, etc")
     async def editor(self, ctx: SlashContext):
-        """Skip a quest, get money, skills, etc"""
-        await ctx.send(embed=messages.editor(ctx))
-    # all in one
-
-    @cog_ext.cog_slash(name="hideout", guild_ids=warmup.guilds, description="How to shorten hideout craftings, longer raids,no weight, etc.")
-    async def hideout(self, ctx: SlashContext):
-        """How to shorten hideout craftings, longer raids,no weight, etc."""
-        await ctx.send(embed=messages.hideout(ctx))
-    # server closes instantly
-
-    @cog_ext.cog_slash(name="server", guild_ids=warmup.guilds, description="Fix for Server Closes Instantly")
-    async def server(self, ctx: SlashContext):
-        """Server Closes Instantly"""
-        await ctx.send(embed=messages.server(ctx))
+        rel = Button(style=5, label="Release",
+                     url="https://github.com/JustEmuTarkov/JET-ProfileEditor/releases")
+        src = Button(style=5, label="Source Code",
+                     url="https://github.com/JustEmuTarkov/JET-ProfileEditor")
+        comps = [[rel, src], [auth, invite]]
+        await ctx.send(embed=messages.editor(ctx), components=comps)
 # general install
 
     @cog_ext.cog_slash(name="install", guild_ids=warmup.guilds, description="How to install Jet 12.9")
     async def install(self, ctx: SlashContext):
-        """How to install Jet 12.9"""
-        await ctx.send(embed=messages.install(ctx))
-# send noobs to kovac's discord
+        steps = messages.install()
+        index = 1
+        b1 = Button(style=3, label="Previous", id="prev0", disabled=True)
+        b2 = Button(style=1, label=f"Step 1/6", disabled=True)
+        b3 = Button(style=3, label="Next", id="next0")
 
-    @cog_ext.cog_slash(name="kovacs", guild_ids=warmup.guilds, description="Kovacs related help")
-    async def kovacs(self, ctx: SlashContext):
-        """Kovacs related help"""
-        await ctx.send(embed=messages.kovacs(ctx))
+        comps = [[b1, b2, b3], [auth, invite]]
+        msg = await ctx.send(embed=steps["1"], components=comps)
+        while True:
+            try:
+                inte = await self.bot.wait_for("button_click", timeout=120, check=lambda i: i.message.id == msg.id)
+            except TimeoutError:
+                return
+            else:
+                if inte.component.id == "next0" and index < 6:
+                    index = index+1
+                    comps[0][1].label = f"Step {index}/6"
+                    comps[0][0].disabled = False
+                    await msg.edit(embed=steps[f"{index}"], components=comps)
+                    await inte.respond(type=6)
+                if inte.component.id == "prev0" and index > 1:
+                    index = index-1
+                    comps[0][1].label = f"Step {index}/6"
+                    await msg.edit(embed=steps[f"{index}"], components=comps)
+                    await inte.respond(type=6)
+                if index == 1:
+                    comps[0][0].disabled = True
+                    await msg.edit(embed=steps[f"{index}"], components=comps)
+
+                if index == 6:
+                    comps[0][2].disabled = True
+                    await msg.edit(embed=steps[f"{index}"], components=comps)
+    # key already added fix
 
     @cog_ext.cog_slash(name="key", guild_ids=warmup.guilds, description="A key has already been added fix")
     async def key(self, ctx: SlashContext):
-        """A key has already been added fix"""
-        await ctx.send(embed=messages.key(ctx))
+        b1 = Button(style=3, label="Previous", id="prev1", disabled=True)
+        b2 = Button(style=1, label=f"Step 1/3", disabled=True)
+        b3 = Button(style=3, label="Next", id="next1")
+        comps = [[b1, b2, b3], [auth, invite]]
+        steps = messages.key()
+        index = 1
+        msg = await ctx.send(embed=steps[f"{index}"], components=comps)
+        while True:
+            try:
+                inte = await self.bot.wait_for("button_click", timeout=120, check=lambda i: i.message.id == msg.id)
+            except TimeoutError:
+                return
+            else:
+                if inte.component.id == "next1" and index < 3:
+                    index = index+1
+                    comps[0][1].label = f"Step {index}/3"
+                    comps[0][0].disabled = False
+                    await msg.edit(embed=steps[f"{index}"], components=comps)
+                    await inte.respond(type=6)
+                if inte.component.id == "prev1" and index > 1:
+                    index = index-1
+                    comps[0][1].label = f"Step {index}/3"
+                    await msg.edit(embed=steps[f"{index}"], components=comps)
+                    await inte.respond(type=6)
+                if index == 1:
+                    comps[0][0].disabled = True
+                    await msg.edit(embed=steps[f"{index}"], components=comps)
+
+                if index == 3:
+                    comps[0][2].disabled = True
+                    await msg.edit(embed=steps[f"{index}"], components=comps)
 
 
 def setup(bot):

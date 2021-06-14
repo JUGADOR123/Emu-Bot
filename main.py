@@ -28,7 +28,7 @@ intent.guilds = True
 bot = commands.Bot(command_prefix='--', help_command=None,
                    description='Just a Discord Bot', intents=intent)
 slash = SlashCommand(bot, sync_commands=True,
-                     sync_on_cog_reload=True, override_type=True)
+                     sync_on_cog_reload=True)
 # Load Cogs
 for filename in os.listdir('cogs'):
     if filename.endswith('.py'):
