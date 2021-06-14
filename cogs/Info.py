@@ -86,7 +86,7 @@ class Info(commands.Cog):
             except TimeoutError:
                 return
             else:
-                if inte.component.id == "next1" and index < 6:
+                if inte.component.id == "next1" and index < 3:
                     index = index+1
                     comps[0][1].label = f"Step {index}/3"
                     comps[0][0].disabled = False
@@ -101,7 +101,7 @@ class Info(commands.Cog):
                     comps[0][0].disabled = True
                     await msg.edit(embed=steps[f"{index}"], components=comps)
 
-                if index == 6:
+                if index == 3:
                     comps[0][2].disabled = True
                     await msg.edit(embed=steps[f"{index}"], components=comps)
 
