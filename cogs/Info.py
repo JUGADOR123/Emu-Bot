@@ -23,13 +23,6 @@ class Info(commands.Cog):
         """General Information about the Jet Project"""
         await ctx.send(embed=messages.info(ctx), components=[[Button(style=ButtonStyle.URL, label="Documentation", url="https://docs.justemutarkov.eu/"), Button(style=ButtonStyle.URL, label="Mods Archive", url="https://justemutarkov.eu/download"), Button(style=ButtonStyle.URL, label="Jet Discord Invite", url="https://discord.gg/Gbn5bTV")],[auth]])
 
-    # harder bots
-
-    @cog_ext.cog_slash(name="difficulty", guild_ids=warmup.guilds, description="Make the game harder")
-    async def difficulty(self, ctx: SlashContext):
-        """Make the game harder"""
-        await ctx.send(embed=messages.difficulty(ctx))
-
     # profile editor
 
     @cog_ext.cog_slash(name="editor", guild_ids=warmup.guilds, description="Skip a quest, get money, skills, etc")

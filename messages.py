@@ -51,15 +51,6 @@ def port(context):
     sol.add_field(name="Solution 2", value="Open a Command promt (Windows Key, then search cmd) as admin (right click>open as admin), then type the following command: *netstat -nabo* this command will display what ports are being used by what apps, look for port 443 and close wathever app is using it from task mananger", inline=True)
     return port
 
-# embed for difficulty
-
-
-def difficulty(context):
-    difficulty = discord.Embed(title="Want a real challenge huh?",
-                               color=warmup.r, timestamp=datetime.now(), description=f"I see, so u believe u can do better {context.author.mention}? Well prove it")
-    difficulty.add_field(
-        name="Step 1", value="You can use Altered Escape Mod to get harder gameplay, you can find it [here](https://discord.gg/AwvGSFHucw)", inline=False)
-    return difficulty
 
 # embed for jet editor
 
