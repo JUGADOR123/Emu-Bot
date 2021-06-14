@@ -10,9 +10,10 @@ def init():
         guilds = json.load(file)
     global tenorapi
     tenorapi = os.getenv('tenor')
-    global r
+   
+def rmd():
     r = random.randint(0, 0xFFFFFF)
-
+    return r
 
 def cachegifs():
     limits = 50
