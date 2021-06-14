@@ -8,10 +8,11 @@ from discord_components import Button
 import messages
 import warmup
 
+auth = Button(style=4, label="Made by Jug", disabled=True)
 
 class Info(commands.Cog):
     """Information Related commands"""
-
+    
     def __init__(self, bot):
         self.bot = bot
 
@@ -20,7 +21,7 @@ class Info(commands.Cog):
     @cog_ext.cog_slash(name="info", guild_ids=warmup.guilds, description="General Information about the Jet Project")
     async def info(self, ctx: SlashContext):
         """General Information about the Jet Project"""
-        await ctx.send(embed=messages.info(ctx), components=[[Button(style=ButtonStyle.URL, label="Documentation", url="https://docs.justemutarkov.eu/"), Button(style=ButtonStyle.URL, label="Mods Archive", url="https://justemutarkov.eu/download"), Button(style=ButtonStyle.URL, label="Jet Discord Invite", url="https://discord.gg/Gbn5bTV")]])
+        await ctx.send(embed=messages.info(ctx), components=[[Button(style=ButtonStyle.URL, label="Documentation", url="https://docs.justemutarkov.eu/"), Button(style=ButtonStyle.URL, label="Mods Archive", url="https://justemutarkov.eu/download"), Button(style=ButtonStyle.URL, label="Jet Discord Invite", url="https://discord.gg/Gbn5bTV")],[auth]])
 
     # harder bots
 
@@ -37,8 +38,8 @@ class Info(commands.Cog):
         await ctx.send(embed=messages.editor(ctx))
     # all in one
 
-    @cog_ext.cog_slash(name="hideout", guild_ids=warmup.guilds, description="How to shorten hideout craftings, longer raids,no weight, etc.")
-    async def hideout(self, ctx: SlashContext):
+    @cog_ext.cog_slash(name="aio", guild_ids=warmup.guilds, description="How to shorten hideout craftings, longer raids,no weight, etc.")
+    async def aio(self, ctx: SlashContext):
         """How to shorten hideout craftings, longer raids,no weight, etc."""
         await ctx.send(embed=messages.hideout(ctx))
     # server closes instantly
@@ -54,10 +55,11 @@ class Info(commands.Cog):
         """How to install Jet 12.9"""
         steps = messages.install()
         index = 1
-        b1=Button(style=ButtonStyle.green, label="Previous", id="prev", disabled=True)
-        b2=Button(style=ButtonStyle.gray, label=f"Step 1/6", disabled=True)
-        b3=Button(style=ButtonStyle.green, label="Next", id="next")
-        comps=[[b1,b2,b3]]
+        b1=Button(style=3, label="Previous", id="prev", disabled=True)
+        b2=Button(style=1, label=f"Step 1/6", disabled=True)
+        b3=Button(style=3, label="Next", id="next")
+        
+        comps=[[b1,b2,b3],[auth]]
         msg = await ctx.send(embed=steps["1"], components=comps)
         while True:
             try:
