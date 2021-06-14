@@ -12,12 +12,7 @@ class events(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.Cog.listener()
-    async def on_member_join(self, member):
-        guild = member.guild
-        print(f'{member} Has joined {guild}')
-        if guild.system_channel is not None:
-            await guild.system_channel.send(embed=messages.welcome(member))
+
 
     @commands.Cog.listener()
     async def on_ready(self):
