@@ -16,7 +16,7 @@ def install():
     s4 = discord.Embed(
         title="Step 4", description="Apply the [Key Already Added Fix](https://mega.nz/file/7EtxwAJK#DdsT5snvRAydwUXVw-364NUpUJBEiWspAKnlGdyoiwI) by downloading the file and extracting into server>src folder, when prompt select replace files", color=warmup.rmd(),timestamp=datetime.now())
     s5 = discord.Embed(
-        title="Step 5", description="Launch the Jet launcher, it will open an error asking to locate the server, navigate to the location of the server and click ok", color=warmup.rmd())
+        title="Step 5", description="Launch the Jet launcher, it will open an error asking to locate the server, navigate to the location of the server and click ok", color=warmup.rmd(),timestamp=datetime.now())
     s6 = discord.Embed(title="Step 6", description="Click on Start Server and wait until you see the server name appear on the dropdown to the left side of the window, then hit connect, then create an account by clicking the little plus sign and you are ready to go", color=warmup.rmd(),timestamp=datetime.now())
 
     steps = {"1": s1, "2": s2, "3": s3, "4": s4, "5": s5, "6": s6}
