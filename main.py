@@ -5,7 +5,7 @@ import discord
 from discord.ext import commands
 from discord_slash import SlashCommand
 from dotenv import load_dotenv
-import warmup
+import src.warmup as warmup
 
 # Setup Logging
 logging.basicConfig(level=logging.INFO)
@@ -33,5 +33,6 @@ slash = SlashCommand(bot, sync_commands=True,
 for filename in os.listdir('cogs'):
     if filename.endswith('.py'):
         bot.load_extension(f'cogs.{filename[:-3]}')
+        print(f"Loaded {filename}")
 # bot.load_extension(f'cogs.Others')
 bot.run(token)
