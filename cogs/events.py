@@ -17,15 +17,6 @@ class events(commands.Cog):
     @commands.Cog.listener()
     async def on_ready(self):
         DiscordComponents(self.bot)
-        for guild in self.bot.guilds:
-            with open('guilds.json','r+') as file:
-                data=json.load(file)
-                if guild.id not in data:
-                    data.append(guild.id)
-                    file.seek(0)
-                    json.dump(data,file)
-                    file.truncate()
-                    print(f'Added Guild: '+guild.name+' to the list')
         print("<-------------------->")
         print(str(datetime.now().time()) +
               ' Bot has logged in as: {0.user}'.format(self.bot))
@@ -40,32 +31,10 @@ class events(commands.Cog):
     @commands.Cog.listener()
     async def on_guild_join(self, guild):
         print(f'Bot has joined {guild}')
-        with open('guilds.json', 'r+') as file:
-            data = json.load(file)
-            data.append(guild.id)
-            file.seek(0)
-            json.dump(data, file)
-            file.truncate()
-        # reload the cogs
-        for filename in os.listdir('cogs'):
-            if filename.endswith('.py'):
-                self.bot.reload_extension(f'cogs.{filename[:-3]}')
 
     @commands.Cog.listener()
     async def on_guild_remove(self, guild):
         print(f'Bot has left the guild: {guild}')
-        with open('guilds.json', 'r+') as file:
-            data = json.load(file)
-            if guild.id in data:
-                data.remove(guild.id)
-                file.seek(0)
-                json.dump(data, file)
-                file.truncate()
-                # reload the cogs
-        for filename in os.listdir('cogs'):
-            if filename.endswith('.py'):
-                self.bot.reload_extension(f'cogs.{filename[:-3]}')
-        print(str(datetime.now())+' Cogs have been reloaded')
 
     @commands.Cog.listener()
     async def on_message(self, message):
