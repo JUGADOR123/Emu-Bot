@@ -3,12 +3,13 @@ from discord.ext import commands
 from discord_slash import cog_ext, SlashContext
 from discord_slash.utils.manage_commands import create_option
 import messages
+from datetime import datetime
 import warmup
 
 
 class Others(commands.Cog):
     """Other Stuff"""
-
+    funserver=[727670103218585693]
     def __init__(self, bot):
         self.bot = bot
 
@@ -24,6 +25,15 @@ class Others(commands.Cog):
     async def _hug(self, ctx: SlashContext, member: discord.Member):
         """Hug Another member"""
         await ctx.send(embed=messages.hug(ctx, member))
+
+    @cog_ext.cog_slash(name="funfix",description="General Form to fix any issues related to the FunServer",guild_ids=funserver,options=[
+        create_option(name="ingame",description="your character name inside the fun server",option_type=3,required=True),create_option(name="quest",description="name or id of the quest that you need fixed",option_type=3,required=True)])
+    async def funfix(self, ctx:SlashContext,ingame:str,quest:str):
+        msg=discord.Embed(title=f" FunServer Fix: {ctx.author}",description=f"Ingame Name: {ingame} \n Quest Id or Name: {quest}",timestamp=datetime.now(),color=warmup.rmd())
+        log=self.bot.get_channel(823736552341241886) #cfgg-dev-testing
+        memb=self.bot.get_user(161194728405073921) #struan
+        await log.send(f"Incoming Fix {memb.mention}",embed=msg)
+        await ctx.send(f"{ctx.author.mention} Successfully notified the Fun Server team",hidden=True)
 
 
 def setup(bot):
