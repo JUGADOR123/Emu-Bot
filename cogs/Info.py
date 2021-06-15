@@ -46,7 +46,7 @@ class Info(commands.Cog):
         msg = await ctx.send(embed=steps["1"], components=comps)
         while True:
             try:
-                inte = await self.bot.wait_for("button_click", timeout=120, check=lambda i: i.message.id == msg.id)
+                inte = await self.bot.wait_for("button_click", timeout=None, check=lambda i: i.message.id == msg.id)
             except TimeoutError:
                 return
             else:
@@ -81,7 +81,7 @@ class Info(commands.Cog):
         msg = await ctx.send(embed=steps[f"{index}"], components=comps)
         while True:
             try:
-                inte = await self.bot.wait_for("button_click", timeout=120, check=lambda i: i.message.id == msg.id)
+                inte = await self.bot.wait_for("button_click", timeout=None, check=lambda i: i.message.id == msg.id)
             except TimeoutError:
                 return
             else:
