@@ -6,7 +6,6 @@ from discord_components.button import ButtonStyle
 from discord_slash import cog_ext, SlashContext
 from discord_components import Button
 import src.messages as messages
-import src.warmup as warmup
 
 auth = Button(style=1, label="Made by Jug", emoji="♥", disabled=True)
 invite = Button(style=5, label="Invite Me!",
