@@ -74,7 +74,7 @@ class Info(commands.Cog):
     @cog_ext.cog_slash(name="key", guild_ids=warmup.guilds, description="A key has already been added fix")
     async def key(self, ctx: SlashContext):
         b1 = Button(style=3, label="Previous", id="prev1", disabled=True)
-        b2 = Button(style=1, label=f"Step 1/3", disabled=True)
+        b2 = Button(style=1, label=f"Step 1/6", disabled=True)
         b3 = Button(style=3, label="Next", id="next1")
         comps = [[b1, b2, b3], [auth, invite]]
         steps = messages.key()
@@ -86,24 +86,28 @@ class Info(commands.Cog):
             except TimeoutError:
                 return
             else:
-                if inte.component.id == "next1" and index < 3:
+                if inte.component.id == "next1" and index < 6:
                     index = index+1
-                    comps[0][1].label = f"Step {index}/3"
+                    comps[0][1].label = f"Step {index}/6"
                     comps[0][0].disabled = False
                     await msg.edit(embed=steps[f"{index}"], components=comps)
                     await inte.respond(type=6)
                 if inte.component.id == "prev1" and index > 1:
                     index = index-1
-                    comps[0][1].label = f"Step {index}/3"
+                    comps[0][1].label = f"Step {index}/6"
                     await msg.edit(embed=steps[f"{index}"], components=comps)
                     await inte.respond(type=6)
                 if index == 1:
                     comps[0][0].disabled = True
                     await msg.edit(embed=steps[f"{index}"], components=comps)
 
-                if index == 3:
+                if index == 6:
                     comps[0][2].disabled = True
                     await msg.edit(embed=steps[f"{index}"], components=comps)
+    @cog_ext.cog_slash(name="port",guild_ids=warmup.guilds,description="Solutions for port already in use error")
+    async def port(self,ctx:SlashContext):
+        comps=[[auth,invite]]
+        await ctx.send(embed=messages.port(),components=comps)
 
 
 def setup(bot):
