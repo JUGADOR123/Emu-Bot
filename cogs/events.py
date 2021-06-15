@@ -3,8 +3,7 @@ import os
 import discord
 from datetime import datetime
 from discord_components.client import DiscordComponents
-from discord_components.interaction import InteractionType
-import messages
+import src.messages as messages
 from discord.ext import commands
 
 
