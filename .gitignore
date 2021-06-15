@@ -5,3 +5,4 @@ __pycache__/
 discord.log
 guilds.json
 images/
+/.vs

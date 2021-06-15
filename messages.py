@@ -42,7 +42,7 @@ def info(context):
 # embed for port fix
 
 
-def port(context):
+def port():
     sol = discord.Embed(title="Port in Use Fix",
                         description="Possible Solutions for the port already in use error",color=warmup.rmd(),timestamp=datetime.now())
     sol.add_field(name="Solution 1",
@@ -74,11 +74,14 @@ def bonk(ctx, member):
 
 
 def key():
-    s1 = discord.Embed(
-        title="Step 1", description="Download [THIS FILE](https://mega.nz/file/7EtxwAJK#DdsT5snvRAydwUXVw-364NUpUJBEiWspAKnlGdyoiwI)",color=warmup.rmd(),timestamp=datetime.now())
-    s2=discord.Embed(title="Step 2",description="Go to your server folder and extract the file you just downloaded into the SRC folder, when asked select replace files",color=warmup.rmd(),timestamp=datetime.now())
-    s3=discord.Embed(title="Step 3",description="Go to the server folder>user and fully delete the cache folder",color=warmup.rmd(),timestamp=datetime.now())
-    sol={"1":s1,"2":s2,"3":s3}
+    s1=discord.Embed(title="Step 1",description="Locate your Character.json (Server folder/user/profiles/AID/here)",color=warmup.rmd(),timestamp=datetime.now())
+    s2=discord.Embed(title="Step 2",description="Head over to <#829464850895077406> or <#740002608424550522> and do !!clean with the profile attached",color=warmup.rmd(),timestamp=datetime.now())
+    s3=discord.Embed(title="Step 3",description="Go back to where you grabbed the character.json and replace it with the output of the bot")
+    s4 = discord.Embed(
+        title="Step 4", description="Download [THIS FILE](https://mega.nz/file/7EtxwAJK#DdsT5snvRAydwUXVw-364NUpUJBEiWspAKnlGdyoiwI)",color=warmup.rmd(),timestamp=datetime.now())
+    s5=discord.Embed(title="Step 5",description="Go to your server folder and extract the file you just downloaded into the SRC folder, when asked select replace files",color=warmup.rmd(),timestamp=datetime.now())
+    s6=discord.Embed(title="Step 6",description="Go to the server folder>user and fully delete the cache folder",color=warmup.rmd(),timestamp=datetime.now())
+    sol={"1":s1,"2":s2,"3":s3,"4":s4,"5":s5,"6":s6}
     return sol
 
 # embed for hug
