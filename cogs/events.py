@@ -55,6 +55,8 @@ class events(commands.Cog):
                     f'{str(datetime.now().time())}| Message Deleted from: {message.author}')
                 await message.delete()
                 await message.author.send(f"you were token logged due to a malicious file you have opened, your account is currently being used as a phishing bot in servers. please change your password as your account security is critical")
+                member = message.author
+                await member.ban(reason="Phishing Link", delete_message_days=7)
 
 def setup(bot):
     bot.add_cog(events(bot))
