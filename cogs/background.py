@@ -44,7 +44,7 @@ class background(commands.Cog):
                         file.seek(0)
                         json.dump(hellogifs, file)
                         file.truncate()
-        session.close()            
+        await session.close()            
     print("Gifs Cached")
 
 
