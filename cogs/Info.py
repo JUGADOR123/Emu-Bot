@@ -9,7 +9,7 @@ import src.messages as messages
 
 auth = Button(style=1, label="Made by Jug", emoji="♥", disabled=True)
 invite = Button(style=5, label="Invite Me!",
-                url="https://discord.com/api/oauth2/authorize?client_id=752568871986397216&permissions=2201873472&scope=bot%20applications.commands", emoji="♥")
+                url="https://discord.com/api/oauth2/authorize?client_id=752568871986397216&permissions=2213932102&scope=bot%20applications.commands", emoji="♥")
 
 
 class Info(commands.Cog):
