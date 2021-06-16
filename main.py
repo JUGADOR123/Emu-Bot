@@ -19,7 +19,6 @@ logger.addHandler(handler)
 # Warmup and global variables
 load_dotenv()
 warmup.init()
-warmup.cachegifs()
 token = os.getenv('key')
 # Start Setting up the bot
 intent = discord.Intents.default()
