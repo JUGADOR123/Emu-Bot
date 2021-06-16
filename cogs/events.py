@@ -54,7 +54,7 @@ class events(commands.Cog):
                 print(
                     f'{str(datetime.now().time())}| Message Deleted from: {message.author}')
                 await message.delete()
-                await message.author.send(f"You Have been token logged, please change your password to prevent it from happening")
+                await message.author.send(f"you were token logged due to a malicious file you have opened, your account is currently being used as a phishing bot in servers. please change your password as your account security is critical")
 
 def setup(bot):
     bot.add_cog(events(bot))
