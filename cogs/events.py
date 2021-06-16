@@ -3,7 +3,6 @@ import os
 import discord
 from datetime import datetime
 from discord_components.client import DiscordComponents
-import src.messages as messages
 from discord.ext import commands
 
 

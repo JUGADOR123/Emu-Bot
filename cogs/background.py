@@ -3,7 +3,7 @@ import src.warmup as warmup
 import requests
 from discord.ext import tasks, commands
 import aiohttp
-import asyncio
+
 
 limits = 50
 hellolimit=10
