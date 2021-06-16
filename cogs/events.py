@@ -35,14 +35,6 @@ class events(commands.Cog):
     async def on_guild_remove(self, guild):
         print(f'Bot has left the guild: {guild}')
 
-    @commands.Cog.listener()
-    async def on_message(self, message):
-        if message.author is not self.bot:
-            if message.author is not message.author.bot:
-                time = datetime.now()
-
-                stuff = f'[{time.strftime("%b %d %Y %H:%M:%S")}] [{message.guild} @ {message.channel}] [{message.author}] : {message.content}'
-                print(stuff)
     #@commands.Cog.listener()
     #async def on_button_click(self,res):
     #    await res.respond(type=InteractionType.ChannelMessageWithSource,content=f"{res.component.label} pressed")
