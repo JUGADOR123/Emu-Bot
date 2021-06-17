@@ -55,19 +55,23 @@ class Info(commands.Cog):
                     comps[0][1].label = f"Step {index}/6"
                     comps[0][0].disabled = False
                     await msg.edit(embed=steps[f"{index}"], components=comps)
-                    await inte.respond(type=6)
+
                 if inte.component.id == "prev0" and index > 1:
                     index = index-1
                     comps[0][1].label = f"Step {index}/6"
                     await msg.edit(embed=steps[f"{index}"], components=comps)
-                    await inte.respond(type=6)
                 if index == 1:
                     comps[0][0].disabled = True
+                    comps[0][2].disabled = False
                     await msg.edit(embed=steps[f"{index}"], components=comps)
 
                 if index == 6:
                     comps[0][2].disabled = True
+                    comps[0][0].disabled = False
                     await msg.edit(embed=steps[f"{index}"], components=comps)
+            print("this gets executed")
+            await inte.respond(type=6)
+
     # key already added fix
 
     @cog_ext.cog_slash(name="key", description="A key has already been added fix")
@@ -90,19 +94,23 @@ class Info(commands.Cog):
                     comps[0][1].label = f"Step {index}/6"
                     comps[0][0].disabled = False
                     await msg.edit(embed=steps[f"{index}"], components=comps)
-                    await inte.respond(type=6)
+
                 if inte.component.id == "prev1" and index > 1:
                     index = index-1
                     comps[0][1].label = f"Step {index}/6"
                     await msg.edit(embed=steps[f"{index}"], components=comps)
-                    await inte.respond(type=6)
+
                 if index == 1:
                     comps[0][0].disabled = True
+                    comps[0][2].disabled = False
                     await msg.edit(embed=steps[f"{index}"], components=comps)
 
                 if index == 6:
                     comps[0][2].disabled = True
+                    comps[0][0].disabled = False
                     await msg.edit(embed=steps[f"{index}"], components=comps)
+            print("this gets executed")
+            await inte.respond(type=6)
 
     @cog_ext.cog_slash(name="port", description="Solutions for port already in use error")
     async def port(self, ctx: SlashContext):
