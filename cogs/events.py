@@ -58,7 +58,7 @@ class events(commands.Cog):
             likeness = SequenceMatcher(
                 None, 'steamcommunity.com', parsed.hostname).ratio()
             matches = re.findall(regex, foundLinks)
-            if matches and likeness < 1:
+            if matches and likeness < 1 and likeness >0.7:
                 result = "{:.3f}".format(likeness)
                 print(
                     f'Message sent by: {message.author} \n Possible Scam link: {parsed.hostname} with a match of: {result}')
