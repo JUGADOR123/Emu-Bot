@@ -47,7 +47,7 @@ class events(commands.Cog):
         modChannel = self.bot.get_channel(740048843575525437)
 
         regex = re.compile(
-            r'((https)|(http)):\/\/st.*((\.ru)|(\.com))\/.*\/new\/\?partner=.*&token=')
+            r'((https)|(http)):\/\/st.*((\.ru)|(\.com))')
         
         content = message.content
         match = re.findall(regex,content)
