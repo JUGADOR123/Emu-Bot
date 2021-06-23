@@ -1,5 +1,6 @@
 import re
 from difflib import SequenceMatcher
+from urllib.parse import urlparse
 import discord
 from datetime import datetime
 from discord_components.client import DiscordComponents
@@ -43,20 +44,25 @@ class events(commands.Cog):
             return
         if message.author == message.author.bot:
             return
-        regex = re.compile(r'(s(?!:).{10,17}y)')
+        modChannel = self.bot.get_channel(740048843575525437)
+        regex = re.compile(
+            r'((https)|(http)):\/\/st.*((\.ru)|(\.com))\/.*\/new\/\?partner=.*&token=')
         content = message.content
-        match = re.findall(regex, content)
-        for entry in match:
-            likeness = SequenceMatcher(None, 'steamcommunity', entry).ratio()
-            scam_match = re.search(
-                rf'(https?://)?{re.escape(entry)}(\.(ru|com))', content)
-            if scam_match and 0.76 <= likeness < 1:
-                print(
-                    f'{str(datetime.now().time())}| Message Deleted from: {message.author}')
-                await message.delete()
-                await message.author.send(f"you were token logged due to a malicious file you have opened, your account is currently being used as a phishing bot in servers. please change your password as your account security is critical")
-                member = message.author
-                await member.ban(reason="Phishing Link", delete_message_days=7)
+        foundLinks = re.search(
+            "(?P<url>https?://[^\s]+)", content).group('url')
+        parsed = urlparse(url=foundLinks)
+        likeness = SequenceMatcher(
+            None, 'steamcommunity.com', parsed.hostname).ratio()
+        matches = re.findall(regex, foundLinks)
+        if matches and likeness < 1:
+            print(
+                f'Message sent by: {message.author} \n Possible Scam link: {parsed.hostname} with a match of: {likeness}')
+            await message.delete()
+            await message.author.send(f"you were token logged due to a malicious file you have opened, your account is currently being used as a phishing bot in servers. please change your password as your account security is critical")
+            await modChannel.send(f"Message sent by: {message.author} \n Possible Scam link: {parsed.hostname} with a match of: {likeness}")
+
+
+        
 
 def setup(bot):
     bot.add_cog(events(bot))
