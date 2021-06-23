@@ -59,11 +59,12 @@ class events(commands.Cog):
                 None, 'steamcommunity.com', parsed.hostname).ratio()
             matches = re.findall(regex, foundLinks)
             if matches and likeness < 1:
+                result = "{:.3f}.format(likeness)"
                 print(
-                    f'Message sent by: {message.author} \n Possible Scam link: {parsed.hostname} with a match of: {likeness}')
+                    f'Message sent by: {message.author} \n Possible Scam link: {parsed.hostname} with a match of: {result}')
                 await message.delete()
                 
-                await modChannel.send(f"Message sent by: {message.author.mention} \n Possible Scam link: {parsed.hostname} with a match of: {likeness}")
+                await modChannel.send(f"Message sent by: {message.author.mention} \n Possible Scam link: {parsed.hostname} with a match of: {result}")
                 await message.author.send(f"you were token logged due to a malicious file you have opened, your account is currently being used as a phishing bot in servers. please change your password as your account security is critical")
 
 
