@@ -45,21 +45,25 @@ class events(commands.Cog):
         if message.author == message.author.bot:
             return
         modChannel = self.bot.get_channel(740048843575525437)
+
         regex = re.compile(
             r'((https)|(http)):\/\/st.*((\.ru)|(\.com))\/.*\/new\/\?partner=.*&token=')
+        
         content = message.content
-        foundLinks = re.search(
-            "(?P<url>https?://[^\s]+)", content).group('url')
-        parsed = urlparse(url=foundLinks)
-        likeness = SequenceMatcher(
-            None, 'steamcommunity.com', parsed.hostname).ratio()
-        matches = re.findall(regex, foundLinks)
-        if matches and likeness < 1:
-            print(
-                f'Message sent by: {message.author} \n Possible Scam link: {parsed.hostname} with a match of: {likeness}')
-            await message.delete()
-            await message.author.send(f"you were token logged due to a malicious file you have opened, your account is currently being used as a phishing bot in servers. please change your password as your account security is critical")
-            await modChannel.send(f"Message sent by: {message.author} \n Possible Scam link: {parsed.hostname} with a match of: {likeness}")
+        match = re.findall(regex,content)
+        if(match):
+            foundLinks = re.search(
+                "(?P<url>https?://[^\s]+)", content).group('url')
+            parsed = urlparse(url=foundLinks)
+            likeness = SequenceMatcher(
+                None, 'steamcommunity.com', parsed.hostname).ratio()
+            matches = re.findall(regex, foundLinks)
+            if matches and likeness < 1:
+                print(
+                    f'Message sent by: {message.author} \n Possible Scam link: {parsed.hostname} with a match of: {likeness}')
+                await message.delete()
+                await message.author.send(f"you were token logged due to a malicious file you have opened, your account is currently being used as a phishing bot in servers. please change your password as your account security is critical")
+                await modChannel.send(f"Message sent by: {message.author.mention} \n Possible Scam link: {parsed.hostname} with a match of: {likeness}")
 
 
         
