@@ -1,7 +1,7 @@
 import json
 import random
 import discord
-import warmup
+import src.warmup as warmup
 from datetime import datetime
 
 
