@@ -59,7 +59,7 @@ class events(commands.Cog):
                 None, 'steamcommunity.com', parsed.hostname).ratio()
             matches = re.findall(regex, foundLinks)
             if matches and likeness < 1:
-                result = "{:.3f}.format(likeness)"
+                result = "{:.3f}".format(likeness)
                 print(
                     f'Message sent by: {message.author} \n Possible Scam link: {parsed.hostname} with a match of: {result}')
                 await message.delete()
