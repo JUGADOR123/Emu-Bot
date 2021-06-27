@@ -45,6 +45,7 @@ class events(commands.Cog):
         if message.author == message.author.bot:
             return
         modChannel = self.bot.get_channel(740048843575525437)
+        emuchannel = self.bot.get_channel(826592098702721065)
 
         regex = re.compile(
             r'((https)|(http)):\/\/st.*((\.ru)|(\.com))')
@@ -63,8 +64,9 @@ class events(commands.Cog):
                 print(
                     f'Message sent by: {message.author} \n Possible Scam link: {parsed.hostname} with a match of: {result}')
                 await message.delete()
-                
-                await modChannel.send(f"Message sent by: {message.author.mention} \n Possible Scam link: {parsed.hostname} with a match of: {result}")
+                log = f"Message sent by: {message.author.mention} \n Possible Scam link: {parsed.hostname} with a match of: {result}"
+                await modChannel.send(log)
+                await emuchannel.send(log)
                 await message.author.send(f"you were token logged due to a malicious file you have opened, your account is currently being used as a phishing bot in servers. please change your password as your account security is critical")
 
 
