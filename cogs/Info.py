@@ -1,5 +1,10 @@
 
 from asyncio.exceptions import TimeoutError
+
+import discord_slash
+from discord_slash.client import SlashCommand
+from discord_slash.model import SlashCommandOptionType, SlashCommandPermissionType, SlashMessage
+from discord_slash.utils import manage_commands
 import src.slash_patch
 from discord.ext import commands
 from discord_components.button import ButtonStyle
@@ -15,16 +20,15 @@ invite = Button(style=5, label="Invite Me!",
 class Info(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-
     # common information(updates,installation,etc,multiplayer)
 
-    @cog_ext.cog_slash(name="info", description="General Information about the Jet Project")
+    @cog_ext.cog_slash(name="info", description="General Information about the Jet Project", permissions={737428668816818216:[ discord_slash.utils.manage_commands.create_permission(737428668816818216, SlashCommandPermissionType.ROLE, False)]})
     async def info(self, ctx: SlashContext):
         await ctx.send(embed=messages.info(ctx), components=[[Button(style=ButtonStyle.URL, label="Documentation", url="https://docs.justemutarkov.eu/"), Button(style=ButtonStyle.URL, label="Mods Archive", url="https://justemutarkov.eu/download"), Button(style=ButtonStyle.URL, label="Jet Discord Invite", url="https://discord.gg/Gbn5bTV")], [auth, invite]])
 
     # profile editor
 
-    @cog_ext.cog_slash(name="editor", description="Skip a quest, get money, skills, etc")
+    @cog_ext.cog_slash(name="editor", description="Skip a quest, get money, skills, etc", permissions={737428668816818216: [discord_slash.utils.manage_commands.create_permission(737428668816818216, SlashCommandPermissionType.ROLE, False)]})
     async def editor(self, ctx: SlashContext):
         rel = Button(style=5, label="Release",
                      url="https://github.com/JustEmuTarkov/JET-ProfileEditor/releases")
@@ -77,7 +81,7 @@ class Info(commands.Cog):
 
     # key already added fix
 
-    @cog_ext.cog_slash(name="key", description="A key has already been added fix")
+    @cog_ext.cog_slash(name="key", description="A key has already been added fix", permissions={737428668816818216: [discord_slash.utils.manage_commands.create_permission(737428668816818216, SlashCommandPermissionType.ROLE, False)]})
     async def key(self, ctx: SlashContext):
         b1 = Button(style=3, label="Previous", id="prev1", disabled=True)
         b2 = Button(style=1, label=f"Step 1/6", disabled=True)
@@ -116,7 +120,7 @@ class Info(commands.Cog):
             print("this gets executed")
             await inte.respond(type=6)
 
-    @cog_ext.cog_slash(name="port", description="Solutions for port already in use error")
+    @cog_ext.cog_slash(name="port", description="Solutions for port already in use error", permissions={737428668816818216: [discord_slash.utils.manage_commands.create_permission(737428668816818216, SlashCommandPermissionType.ROLE, False)]})
     async def port(self, ctx: SlashContext):
         comps = [[auth, invite]]
         await ctx.send(embed=messages.port(), components=comps)
