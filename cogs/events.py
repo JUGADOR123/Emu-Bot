@@ -57,8 +57,10 @@ class events(commands.Cog):
                     f'Message sent by: {message.author} \n Possible Scam link: {parsed.hostname} with a match of: {result}')
                 await message.delete()
                 log = f"Message sent by: {message.author.mention} \n Possible Scam link: {parsed.hostname} with a match of: {result}"
-                await modChannel.send(log)
-                await emuchannel.send(log)
+                if message.guild.id == 737428668816818216:
+                    await emuchannel.send(log)
+                else:
+                    await modChannel.send(log)
                 await message.author.send(f"you were token logged due to a malicious file you have opened, your account is currently being used as a phishing bot in servers. please change your password as your account security is critical")
 
 
