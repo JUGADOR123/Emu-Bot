@@ -1,6 +1,8 @@
+
 import json
 import os
 from time import sleep
+from src import bot
 
 art = """\
 ███████ ███    ███ ██    ██     ██████   ██████  ████████     
@@ -8,7 +10,6 @@ art = """\
 █████   ██ ████ ██ ██    ██     ██████  ██    ██    ██        
 ██      ██  ██  ██ ██    ██     ██   ██ ██    ██    ██        
 ███████ ██      ██  ██████      ██████   ██████     ██        """
-
 
 def startup() -> bool:
     try:
@@ -27,6 +28,8 @@ def startup() -> bool:
         return False
     return True
 
+def main():
+    bot.start()
 
 if __name__ == "__main__":
     print(art)
@@ -34,3 +37,5 @@ if __name__ == "__main__":
     print("Loading Startup")
     startup()
     print("Startup Loaded")
+    print("Starting Discord Bot....")
+    main()
