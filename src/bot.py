@@ -1,9 +1,11 @@
 import os
+import traceback
 from datetime import datetime
 
 import discord
 import discord_slash
 from dotenv import load_dotenv
+from discord.ext import commands
 
 from . import dataclass
 
@@ -46,9 +48,44 @@ async def on_ready():
 "Command Count        : {len(slash.commands)}"
 "Discord.py Version   : {discord.__version__}"
 "DiscordSlash Version : {discord_slash.__version__}"""
-        print(f"{output}")
-        await bot.change_presence(
+    print(f"{output}")
+    await bot.change_presence(
             status=discord.Status.online,
             activity=discord.Activity(
                 type=discord.ActivityType.watching, name="over your server"),
+        )
+
+
+@bot.event
+async def on_command_error(ctx, ex):
+    await on_slash_command_error(ctx, ex)
+
+
+@bot.event
+async def on_slash_command_error(ctx, ex):
+
+    # default error messages
+    if isinstance(ex, commands.CheckFailure) or isinstance(ex, discord_slash.error.CheckFailure):
+        try:
+            await ctx.send("Sorry you don't have the correct permissions for that command")
+        except:
+            pass
+    elif isinstance(ex, commands.MaxConcurrencyReached):
+        try:
+            await ctx.send("Hang on, too many people are using this command")
+        except:
+            pass
+    elif isinstance(ex, commands.CommandOnCooldown):
+        try:
+            await ctx.send("Slow Down! Wait {:.2f}s".format(ex.retry_after))
+        except:
+            pass
+    else:
+        # log anything that isnt the above
+        print(
+            "Ignoring exception in command {}: {}".format(
+                ctx.command,
+                "".join(traceback.format_exception(
+                    type(ex), ex, ex.__traceback__)),
+            )
         )
