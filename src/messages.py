@@ -26,7 +26,7 @@ def install():
 # Embed for main information
 
 
-def info(context):
+def info():
     info = discord.Embed(title="General information about the Jet Project",
                          color=warmup.rmd(), timestamp=datetime.now())
     info.add_field(
@@ -55,7 +55,7 @@ def port():
 # embed for jet editor
 
 
-def editor(context):
+def editor():
     editor = discord.Embed(title="Profile Editor", description="Edit your ingame money, stats, complete quests and much more",
                            color=warmup.rmd(), timestamp=datetime.now())
     return editor

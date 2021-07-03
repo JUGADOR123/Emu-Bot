@@ -15,7 +15,7 @@ bot = dataclass.Bot(command_prefix="--", description="Emutarkov Bot",
                     case_insensitive=True, intents=intents, help_command=None)
 slash = bot.slash
 load_dotenv()
-token = os.getenv('key')
+token = os.getenv('key2')
 
 
 def start():
