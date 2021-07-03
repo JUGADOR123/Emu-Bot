@@ -2,7 +2,7 @@
 import json
 import os
 from time import sleep
-from src import bot
+from src import bot, warmup
 
 art = """\
 ███████ ███    ███ ██    ██     ██████   ██████  ████████     
@@ -26,6 +26,7 @@ def startup() -> bool:
     except Exception as e:
         print(e)
         return False
+    warmup.init()
     return True
 
 def main():
