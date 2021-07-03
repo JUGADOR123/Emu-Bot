@@ -19,7 +19,7 @@ def install():
         title="Step 5", description="Launch the Jet launcher, it will open an error asking to locate the server, navigate to the location of the server and click ok", color=warmup.rmd(), timestamp=datetime.now())
     s6 = discord.Embed(title="Step 6", description="Click on Start Server and wait until you see the server name appear on the dropdown to the left side of the window, then hit connect, then create an account by clicking the little plus sign and you are ready to go", color=warmup.rmd(), timestamp=datetime.now())
 
-    steps = {"1": s1, "2": s2, "3": s3, "4": s4, "5": s5, "6": s6}
+    steps = [s1,s2,s3,s4,s5,s6]
     return steps
 
 
@@ -88,7 +88,7 @@ def key():
                        color=warmup.rmd(), timestamp=datetime.now())
     s6 = discord.Embed(title="Step 6", description="Go to the server folder>user and fully delete the cache folder",
                        color=warmup.rmd(), timestamp=datetime.now())
-    sol = {"1": s1, "2": s2, "3": s3, "4": s4, "5": s5, "6": s6}
+    sol = [s1,s2,s3,s4,s5,s6]
     return sol
 
 # embed for hug
