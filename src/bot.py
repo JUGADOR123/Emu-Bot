@@ -10,6 +10,7 @@ from discord.ext import commands
 from . import dataclass
 
 intents = discord.Intents.all()
+intents.members=True
 bot = dataclass.Bot(command_prefix="--", description="Emutarkov Bot",
                     case_insensitive=True, intents=intents, help_command=None)
 slash = bot.slash
@@ -47,7 +48,8 @@ async def on_ready():
 "Cog Count            : {len(bot.cogs)}"
 "Command Count        : {len(slash.commands)}"
 "Discord.py Version   : {discord.__version__}"
-"DiscordSlash Version : {discord_slash.__version__}"""
+"DiscordSlash Version : {discord_slash.__version__}"
+"""
     print(f"{output}")
     await bot.change_presence(
             status=discord.Status.online,
