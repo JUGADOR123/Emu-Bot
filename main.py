@@ -1,7 +1,7 @@
-
 import json
 import os
 from time import sleep
+
 from src import bot, warmup
 
 art = """\
@@ -10,6 +10,7 @@ art = """\
 █████   ██ ████ ██ ██    ██     ██████  ██    ██    ██        
 ██      ██  ██  ██ ██    ██     ██   ██ ██    ██    ██        
 ███████ ██      ██  ██████      ██████   ██████     ██        """
+
 
 def startup() -> bool:
     try:
@@ -29,8 +30,10 @@ def startup() -> bool:
     warmup.init()
     return True
 
+
 def main():
     bot.start()
+
 
 if __name__ == "__main__":
     print(art)

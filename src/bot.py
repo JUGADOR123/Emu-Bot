@@ -10,20 +10,25 @@ from discord.ext import commands
 from . import dataclass
 
 intents = discord.Intents.all()
-intents.members=True
-bot = dataclass.Bot(command_prefix="--", description="Emutarkov Bot",
-                    case_insensitive=True, intents=intents, help_command=None)
+intents.members = True
+bot = dataclass.Bot(
+    command_prefix="--",
+    description="Emutarkov Bot",
+    case_insensitive=True,
+    intents=intents,
+    help_command=None,
+)
 slash = bot.slash
 load_dotenv()
-token = os.getenv('key2')
+token = os.getenv("key2")
 
 
 def start():
     # Load Cogs
     print("Loading Cogs")
-    for filename in os.listdir('src/cogs'):
-        if filename.endswith('.py'):
-            bot.load_extension(f'src.cogs.{filename[:-3]}')
+    for filename in os.listdir("src/cogs"):
+        if filename.endswith(".py"):
+            bot.load_extension(f"src.cogs.{filename[:-3]}")
             print(f"Loaded {filename}")
     print("Cogs Loaded")
     bot.run(token, bot=True, reconnect=True)
@@ -40,7 +45,7 @@ async def on_ready():
     """Called when the bot is ready"""
     if not bot.startTime:
         await startupTasks()
-        output =f"""
+        output = f"""
 "Logged in as         : {bot.user.name} #{bot.user.discriminator}"
 "User ID              : {bot.user.id}"
 "Start Time           : {bot.startTime.ctime()}"
@@ -52,10 +57,11 @@ async def on_ready():
 """
     print(f"{output}")
     await bot.change_presence(
-            status=discord.Status.online,
-            activity=discord.Activity(
-                type=discord.ActivityType.watching, name="over your server"),
-        )
+        status=discord.Status.online,
+        activity=discord.Activity(
+            type=discord.ActivityType.watching, name="over your server"
+        ),
+    )
 
 
 @bot.event
@@ -67,9 +73,13 @@ async def on_command_error(ctx, ex):
 async def on_slash_command_error(ctx, ex):
 
     # default error messages
-    if isinstance(ex, commands.CheckFailure) or isinstance(ex, discord_slash.error.CheckFailure):
+    if isinstance(ex, commands.CheckFailure) or isinstance(
+        ex, discord_slash.error.CheckFailure
+    ):
         try:
-            await ctx.send("Sorry you don't have the correct permissions for that command")
+            await ctx.send(
+                "Sorry you don't have the correct permissions for that command"
+            )
         except:
             pass
     elif isinstance(ex, commands.MaxConcurrencyReached):
@@ -87,7 +97,6 @@ async def on_slash_command_error(ctx, ex):
         print(
             "Ignoring exception in command {}: {}".format(
                 ctx.command,
-                "".join(traceback.format_exception(
-                    type(ex), ex, ex.__traceback__)),
+                "".join(traceback.format_exception(type(ex), ex, ex.__traceback__)),
             )
         )
