@@ -1,3 +1,4 @@
+from src.Paginator import Paginator
 import discord_slash
 import src.messages as messages
 from discord.ext import commands
@@ -82,6 +83,14 @@ class info(commands.Cog):
     )
     async def port(self, ctx):
         await ctx.send(embed=messages.port(), components=[footerBar])
+
+    @cog_ext.cog_slash(name="install", description="How to install Jet 12.9")
+    async def install(self, ctx):
+        await Paginator(bot=self.bot, ctx=ctx, pages=messages.install())
+
+    @cog_ext.cog_slash(name="key", description="A key has already been added fix")
+    async def key(self, ctx):
+        await Paginator(bot=self.bot, ctx=ctx, pages=messages.key())
 
 
 def setup(bot):
