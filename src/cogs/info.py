@@ -81,7 +81,7 @@ class info(commands.Cog):
         permissions=blacklist,
     )
     async def port(self, ctx):
-        await ctx.send(embed=messages.port(), components=footerBar)
+        await ctx.send(embed=messages.port(), components=[footerBar])
 
 
 def setup(bot):
