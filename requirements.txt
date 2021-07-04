@@ -1,0 +1,5 @@
+discord-py-slash-command >=2.3.1
+discord.py >=1.7.0
+python-dotenv >=0.17.0
+DateTime >=4.0.0
+aiohttp >=3.7.4
