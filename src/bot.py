@@ -20,7 +20,7 @@ bot = dataclass.Bot(
 )
 slash = bot.slash
 load_dotenv()
-token = os.getenv("key2")
+token = os.getenv("key")
 
 
 def start():
