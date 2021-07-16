@@ -31,12 +31,12 @@ class events(commands.Cog):
                 host = link[1] + link[2]
                 likeness = SequenceMatcher(None, "steamcommunity.com", host).ratio()
                 result = "{:.3f}".format(likeness)
-                if likeness < 1 and likeness > 0.65:
+                if likeness < 1 and likeness >= 0.7:
                     print(
                         f"Message sent by: {message.author} \n Possible Scam link: {host} with a match of: {result}"
                     )
                     await message.delete()
-                    if message.guild.id == 826592098702721065:  # post in emu related
+                    if message.guild.id == 737428668816818216:  # post in emu related
                         await log2.send(
                             f"Message sent by: {message.author.mention} \n Possible Scam link: {host} with a match of: {result}"
                         )
