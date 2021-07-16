@@ -5,7 +5,7 @@ name = "pypi"
 
 [packages]
 discord-py-slash-command = "*"
-"discord.py" = "*"
+"discord.py" = ">=1.7.3"
 python-dotenv = "*"
 aiohttp = "*"
 DateTime = "*"
