@@ -1,4 +1,4 @@
-from src.Paginator import Paginator
+from dinteractions_Paginator import Paginator
 import discord_slash
 import src.messages as messages
 from discord.ext import commands

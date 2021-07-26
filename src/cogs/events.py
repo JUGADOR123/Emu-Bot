@@ -33,16 +33,16 @@ class events(commands.Cog):
                 result = "{:.3f}".format(likeness)
                 if likeness < 1 and likeness >= 0.60:
                     print(
-                        f"Message sent by: {message.author} \n Possible Scam link: {host} with a match of: {result}"
+                        f"[{message.guild.name}] \n Message sent by: [{message.author}] Website: [`{host}`] Match: [`{result}`]"
                     )
                     await message.delete()
                     if message.guild.id == 737428668816818216:  # post in emu related
                         await log2.send(
-                            f"Message sent by: {message.author.mention} \n Possible Scam link: {host} with a match of: {result}"
+                            f"[{message.guild.name}] \n Message sent by: [{message.author.mention}] Website: [`{host}`] Match: [`{result}`]"
                         )
                     else:  # post in emutarkov
                         await log1.send(
-                            f"Message sent by: {message.author.mention} \n Possible Scam link: {host} with a match of: {result}"
+                            f"[{message.guild.name}] \n Message sent by: [{message.author.mention}] Website: [`{host}`] Match: [`{result}`]"
                         )
                         await message.author.send(
                             f"you were token logged due to a malicious file you have opened, your account is currently being used as a phishing bot in servers. please change your password as your account security is critical"
