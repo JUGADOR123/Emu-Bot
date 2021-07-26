@@ -45,11 +45,18 @@ async def on_ready():
     """Called when the bot is ready"""
     if not bot.startTime:
         await startupTasks()
+        guilds = bot.guilds
+        memberAmount = 0
+        for server in guilds:
+            guild = bot.get_guild(server.id)
+            memberAmount += guild.member_count
+
         output = f"""
 "Logged in as         : {bot.user.name} #{bot.user.discriminator}"
 "User ID              : {bot.user.id}"
 "Start Time           : {bot.startTime.ctime()}"
 "Server Count         : {len(bot.guilds)}"
+"Member Count         : {memberAmount}"
 "Cog Count            : {len(bot.cogs)}"
 "Command Count        : {len(slash.commands)}"
 "Discord.py Version   : {discord.__version__}"
