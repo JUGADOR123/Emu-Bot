@@ -9,6 +9,7 @@ discord-py-slash-command = "*"
 python-dotenv = "*"
 aiohttp = "*"
 DateTime = "*"
+dinteractions-paginator = "*"
 
 [dev-packages]
 
