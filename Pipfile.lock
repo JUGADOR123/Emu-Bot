@@ -93,11 +93,11 @@
         },
         "dinteractions-paginator": {
             "hashes": [
-                "sha256:7c3ca99ca582d039d5e1c7bc981d27cb272951a6c280173c8ec6c4e739488818",
-                "sha256:85a31132ffe8f4d20f5ff967fb23aeeb7d294271bba31a7c24124ced1a2dc763"
+                "sha256:a2f78774f9c2e44254449cb003fa0ac4b621e0fb55f3d06b2bb38ce47ef1c1a2",
+                "sha256:d80e9437dc143a957eda6ac8e670003213afd2ec3b4f0aeea2d36ed5e9604297"
             ],
             "index": "pypi",
-            "version": "==1.0.4"
+            "version": "==1.1.2"
         },
         "discord-py-slash-command": {
             "hashes": [
