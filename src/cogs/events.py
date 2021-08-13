@@ -24,7 +24,7 @@ class events(commands.Cog):
         log1 = self.bot.get_channel(858971025174036540)  # Emutarkov logs
         log2 = self.bot.get_channel(826592098702721065)  # emu related
 
-        finder = r"(https?://)?(?:www.)?(?P<url>[^\s]{5,20})(?P<domain>(?:.com|.ru))(?P<extra>[^\s]+)?"  # Regex to find any form of links
+        finder = r"(https?://)?(?:www.)?(?P<url>[^\s]{5,20})(?P<domain>(?:.com|.ru|.link|.xyz|))(?P<extra>[^\s]+)?"  # Regex to find any form of links
         linksFound = re.findall(finder, message.content)
         if linksFound:
             for link in linksFound:
