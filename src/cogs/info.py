@@ -8,11 +8,11 @@ from discord_slash.utils.manage_components import create_actionrow, create_butto
 
 # blacklist emurelated
 blacklist = {
-    737428668816818216: [
-        discord_slash.utils.manage_commands.create_permission(
-            737428668816818216, SlashCommandPermissionType.ROLE, False
-        )
-    ]
+   # 737428668816818216: [
+   #     discord_slash.utils.manage_commands.create_permission(
+   #         737428668816818216, SlashCommandPermissionType.ROLE, False
+    #    )
+    #]
 }
 footerButtons = [
     create_button(style=1, label="Made by Jugador", emoji="♥", disabled=True),
