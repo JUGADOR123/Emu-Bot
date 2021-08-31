@@ -36,10 +36,13 @@ class events(commands.Cog):
                         f"[{message.guild.name}] \n Message sent by: [{message.author}] Website: [`{host}`] Match: [`{result}`]"
                     )
                     await message.delete()
-                    if message.guild.id == 737428668816818216:  # post in emu related
-                        await log2.send(
-                            f"[{message.guild.name}] \n Message sent by: [{message.author.mention}] Website: [`{host}`] Match: [`{result}`]"
-                        )
+                    if message.guild.id == 737428668816818216: 
+                        pass
+                    # post in emu related
+                      #  await log2.send(
+                       #     f"[{message.guild.name}] \n Message sent by: [{message.author.mention}] Website: [`{host}`] Match: [`{result}`]"
+                       # )
+  
                     else:  # post in emutarkov
                         await log1.send(
                             f"[{message.guild.name}] \n Message sent by: [{message.author.mention}] Website: [`{host}`] Match: [`{result}`]"
